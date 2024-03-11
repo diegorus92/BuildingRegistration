@@ -1,0 +1,46 @@
+<div class="container-fluid">
+
+    <!--General building info-->
+    <div class="row">
+
+        <div class="col">
+            <div class="container">
+                <div class="header">
+                    <p><b>{{building.buildingName}}</b></p>
+                    <p><i>{{building.buildingAddress}}</i></p>
+                </div>
+                <p class="note">{{building.buildingNote}}</p>
+            </div>
+            </div>
+
+        <div class="col-5">
+            <div class="building-features">
+                <p>Guard: <span [style.color]="building.buildingHasGuard == 'YES' ? 'green': 'red' ">{{building.buildingHasGuard}}</span></p>
+                <p>Cleaning Service: <span [style.color]="building.buildingHasCleaningService == 'YES' ? 'green': 'red' ">{{building.buildingHasCleaningService}}</span></p>
+                <p>Janitor: <span [style.color]="building.buildingHasJanitor == 'YES' ? 'green': 'red' ">{{building.buildingHasJanitor}}</span></p>
+                <p>Allow Pets: <span [style.color]="building.buildingAllowPet == 'YES' ? 'green': 'red' ">{{building.buildingAllowPet}}</span></p>
+                <p>WiFi: <span [style.color]="building.buildingHasWifi == 'YES' ? 'green': 'red' ">{{building.buildingHasWifi}}</span></p>
+                <p>Elevators: <span>{{building.buildingElevatorQty}}</span></p>
+            </div>
+        </div>
+    </div>
+
+    <!--Floors and Garages of building info-->
+    <div class="row floors-and-garages">
+
+        <div class="col">
+            <section>
+                <h2>Floors</h2>
+                <app-floor *ngFor="let floor of building.floorDtos" [floor]="floor"></app-floor>
+            </section>
+        </div>
+
+        <div class="col">
+            <section>
+                <h2>Garages</h2>
+                <app-garage *ngFor="let garage of building.garageDtos" [garage] = "garage"></app-garage>
+            </section>
+        </div>
+    </div>
+</div>
+

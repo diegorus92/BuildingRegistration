@@ -1,0 +1,119 @@
+<div class="container container-form">
+    <form [formGroup]="occupantForm" (ngSubmit)="onSubmit()">
+
+        <!--Occupant basic info inputs-->
+        <section>
+            <input class="form-control" formControlName="occupantName" type="text" placeholder="Occupant Name" aria-label="default input example">
+            <app-input-error-message *ngIf="occupantForm.controls['occupantName'].touched && occupantForm.controls['occupantName'].hasError('required')" [message]="'You must complete this field'"></app-input-error-message>
+
+            <input class="form-control" formControlName="occupantSurname" type="text" placeholder="Occupant Surname" aria-label="default input example">
+            <app-input-error-message *ngIf="occupantForm.controls['occupantSurname'].touched && occupantForm.controls['occupantSurname'].hasError('required')" [message]="'You must complete this field'"></app-input-error-message>
+
+            
+            <input class="form-control" formControlName="occupantCellPhone" type="text" placeholder="Cellphone number" aria-label="default input example">
+            
+            
+            <input class="form-control" formControlName="occupantEmail"  type="text" placeholder="E-mail" aria-label="default input example">  
+            <app-input-error-message *ngIf="occupantForm.controls['occupantEmail'].touched && occupantForm.controls['occupantEmail'].hasError('email')" [message]="'Please write a valid email'"></app-input-error-message>
+        </section>
+
+        <!--Select Building-->
+        <section>
+            <label for="SelectionBuilding" class="form-label">Select Building</label>
+            <select class="form-select" #buildingSelect  id="SelectionBuilding" formControlName="buildingNameAndAddress" (change)="onSelectBuilding(buildingSelect.value)" aria-label="Default select example">
+                <option selected>Open this select menu</option>
+                <option [value]="building.buildingName+'-'+building.buildingAddress" *ngFor="let building of buildings"  >{{building.buildingName}} - {{building.buildingAddress}}</option>
+            </select>
+            <app-input-error-message *ngIf="occupantForm.controls['buildingNameAndAddress'].touched && occupantForm.controls['buildingNameAndAddress'].hasError('required')" [message]="'You must select a building'"></app-input-error-message>
+
+            
+            <!--Floor select-->
+            <div class="container floor-section" *ngIf="buildingSelected">
+                <div>
+                    <label for="SelectionFloor" class="form-label">Select Floor</label>
+                    <select class="form-select" #floorSelect formControlName="floorName" id="SelectionFloor" (change)="onSelectFloor(floorSelect.value)" aria-label="Default select example">
+                        <option selected>Open this select menu</option>
+                        <option [value]="floor.floorName" *ngFor="let floor of buildingSelected.floorDtos"  >{{floor.floorName}}</option>
+                    </select>
+                    <app-input-error-message *ngIf="occupantForm.controls['floorName'].touched && occupantForm.controls['floorName'].hasError('required')" [message]="'You must select a Floor'"></app-input-error-message>
+                </div>
+
+                <!--Department select-->
+                <div>
+                    <label for="SelectionDepartment" class="form-label">Select Department</label>
+                    <select class="form-select" #departmentSelect formControlName="departmentName" id="SelectionDepartment" (change)="onSelectDepartment(departmentSelect.value)" aria-label="Default select example">
+                        <option selected>Open this select menu</option>
+                        <option [value]="department.departmentName" *ngFor="let department of floorSelected.departmentsDtos"  >"{{department.departmentName}}"</option>
+                    </select>
+                    <app-input-error-message *ngIf="occupantForm.controls['departmentName'].touched && occupantForm.controls['departmentName'].hasError('required')" [message]="'You must select a department'"></app-input-error-message>
+                </div>
+
+            </div>
+
+            <!--Garage Select-->
+            <div class="container garage-section" *ngIf="buildingSelected">
+                
+                <div>
+                    <label for="SelectionGarage" class="form-label">Select Garage</label>
+                    <select class="form-select" #garageSelect formControlName="garageLevel"  id="SelectionGarage" (change)="onSelectGarage(garageSelect.value)" aria-label="Default select example">
+                        <option selected>Open this select menu</option>
+                        <option [value]="garage.garageLevel" *ngFor="let garage of buildingSelected.garageDtos"  >{{garage.garageLevel}}</option>
+                    </select>
+                </div>
+
+                <!--Sections Select-->
+                <div *ngIf="garageSelected">
+                    <label for="SelectionGarageSection" class="form-label">Select Garage Section</label>
+                    <app-warning-message *ngIf="checkOccupadiedGarageSectionList(occupantForm.controls['garageSectionName'].value, occupantForm.controls['buildingNameAndAddress'].value.split('-')[0], occupantForm.controls['buildingNameAndAddress'].value.split('-')[1], occupantForm.controls['garageLevel'].value, occupantForm.controls['garageSectionName'].value)"></app-warning-message>
+                    <select class="form-select"  formControlName="garageSectionName"  multiple  id="SelectionGarageSection"  aria-label="Default select example">
+                        <option [value]="section.garageSectionName" 
+                            *ngFor="let section of garageSelected.garageSectionsDtos"
+                            [style.color]="isGarageSectionOccupied(buildingSelected.buildingName!, buildingSelected.buildingAddress!, garageSelected.garageLevel!, section.garageSectionName!) ? 'red': ''"
+                        >{{section.garageSectionName}}</option>
+                    </select>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!--Employees-->
+        <section>
+            <button type="button" class="btn btn-warning" (click)="addNewEmployeeFormGroup()">Add Employee</button>
+
+            <div formArrayName="employees" *ngFor="let employeeGroup of employeesFormArray.controls; let employeeGroupIndex = index">
+                <div class="sub-group-form-controls" formGroupName={{employeeGroupIndex}}>
+                    <input class="form-control" formControlName="employeeName" type="text" placeholder="Employee Name" aria-label="default input example">
+                    <input class="form-control" formControlName="employeeSurname" type="text" placeholder="Employee Surname" aria-label="default input example">
+                    <input class="form-control" formControlName="employeeCheckIn" type="text" placeholder="CheckIn hour (hh:mm)" aria-label="default input example">
+                    <input class="form-control" formControlName="employeeCheckOut"  type="text" placeholder="CheckOut hour (hh:mm)" aria-label="default input example">
+                    
+                    <button type="button" class="btn btn-danger" (click)="removeEmployeeFormGroup(employeeGroupIndex)">Close</button>
+                </div>
+            </div>
+        </section>
+
+        <!--Vehicles-->
+        <section>
+            <button type="button" class="btn btn-warning" (click)="addNewVehicleFormGroup()">Add Vehicle</button>
+
+            <div formArrayName="vehicles" *ngFor="let vehicleForm of vehiclesFormGroup.controls; let vehicleGroupIndex = index">
+                <div class="sub-group-form-controls" formGroupName="{{vehicleGroupIndex}}">
+                    <input class="form-control" formControlName="vehicleBrand" type="text" placeholder="Brand" aria-label="default input example">
+                    <input class="form-control" formControlName="vehicleModel" type="text" placeholder="Model" aria-label="default input example">
+                    <input class="form-control" formControlName="vehicleColor" type="text" placeholder="Color" aria-label="default input example">
+                    <input class="form-control" formControlName="vehicleLicensePlate"  type="text" placeholder="License Plate" aria-label="default input example">
+
+                    <button type="button" class="btn btn-danger" (click)="removeVehicleFormGroup(vehicleGroupIndex)">Close</button>
+                </div>
+            </div>   
+        </section>
+
+        
+        <button type="submit" class="btn btn-success submit-btn" [disabled]="isSubmitPressed">Submit</button>
+        
+        <div class="container spinner" *ngIf="isSpinnerShowing">
+            <mat-spinner [color]="'warn'"></mat-spinner>
+        </div>  
+    </form>
+</div>

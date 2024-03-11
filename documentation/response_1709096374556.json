@@ -1,0 +1,101 @@
+[
+  {
+    "buildingName": "Bacará X",
+    "buildingAddress": "Pago Largo 1260",
+    "buildingHasGuard": true,
+    "buildingHasCleaningService": true,
+    "buildingHasJanitor": true,
+    "buildingHasWifi": true,
+    "buildingAllowPet": true,
+    "buildingElevatorQty": 2,
+    "buildingNote": "The WiFI password is the building address",
+    "floorDtos": [],
+    "garageDtos": []
+  },
+  {
+    "buildingName": "Building Alpha",
+    "buildingAddress": "Los Alamos 123",
+    "buildingHasGuard": true,
+    "buildingHasCleaningService": true,
+    "buildingHasJanitor": true,
+    "buildingHasWifi": true,
+    "buildingAllowPet": true,
+    "buildingElevatorQty": 2,
+    "buildingNote": "Notes jfajklfkajd",
+    "floorDtos": [
+      {
+        "floorName": "1",
+        "departmentsDtos": [
+          {
+            "departmentId": 1,
+            "departmentName": "A",
+            "occupantsQty": 1
+          },
+          {
+            "departmentId": 2,
+            "departmentName": "B",
+            "occupantsQty": 0
+          }
+        ]
+      },
+      {
+        "floorName": "2",
+        "departmentsDtos": [
+          {
+            "departmentId": 3,
+            "departmentName": "A",
+            "occupantsQty": 0
+          },
+          {
+            "departmentId": 4,
+            "departmentName": "B",
+            "occupantsQty": 2
+          }
+        ]
+      },
+      {
+        "floorName": "3",
+        "departmentsDtos": [
+          {
+            "departmentId": 6,
+            "departmentName": "COMPLETE",
+            "occupantsQty": 2
+          }
+        ]
+      }
+    ],
+    "garageDtos": [
+      {
+        "garageLevel": "PB",
+        "garageSectionsDtos": [
+          {
+            "garageSectionName": "A"
+          },
+          {
+            "garageSectionName": "B"
+          },
+          {
+            "garageSectionName": "C"
+          }
+        ]
+      },
+      {
+        "garageLevel": "EP",
+        "garageSectionsDtos": [
+          {
+            "garageSectionName": "A"
+          },
+          {
+            "garageSectionName": "B"
+          },
+          {
+            "garageSectionName": "C"
+          },
+          {
+            "garageSectionName": "D"
+          }
+        ]
+      }
+    ]
+  }
+]

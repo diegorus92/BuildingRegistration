@@ -1,0 +1,24 @@
+.container{
+    align-items: center;
+    background-color: orangered;
+    border-radius: 15px;
+    animation-name: showup;
+    animation-duration: 1500ms;
+    animation-direction: normal;
+}
+
+.container h4{
+    font-weight: bold;
+}
+
+@keyframes showup {
+    0%{
+        opacity: 0;
+    }
+    50%{
+        opacity: 50%;
+    }
+    100%{
+        opacity: 100%;
+    }
+}

@@ -1,0 +1,1 @@
+-Trigger a warning to user if Garage Secition if already occupied before execute post 

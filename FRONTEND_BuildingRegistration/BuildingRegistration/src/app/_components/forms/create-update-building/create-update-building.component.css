@@ -1,0 +1,14 @@
+section{
+    margin-top: 5%;
+}
+
+.sub-input{
+    margin-left:50px;
+}
+
+
+.iterate-control{
+    display:flex;
+    flex-direction: row;
+}
+

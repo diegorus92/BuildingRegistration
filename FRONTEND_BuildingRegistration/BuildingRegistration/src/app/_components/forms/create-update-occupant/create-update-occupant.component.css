@@ -1,0 +1,34 @@
+section{
+    margin-top: 5%;
+}
+
+input{
+    margin-top: 2%;
+}
+
+.floor-section{
+    display:flex;
+    flex-direction: row;
+    justify-content:space-evenly;
+}
+
+.garage-section{
+    margin-top: 5%;
+}
+
+.sub-group-form-controls{
+    padding: 2%;
+    border: 2px red solid;
+    border-radius: 50px;
+    margin: 5% 0;
+}
+
+.sub-group-form-controls button{
+    margin: 3% 35% 0 35%;
+    width: 30%;
+}
+
+.spinner{
+    position:relative;
+    margin-left: 45%;
+}

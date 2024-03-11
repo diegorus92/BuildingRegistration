@@ -1,0 +1,34 @@
+{
+  "occupantName": "string",
+  "occupantSurname": "string",
+  "occupantCellPhone": "string",
+  "occupantEmail": "string",
+  "building": {
+    "buildingName": "string",
+    "buildingAddress": "string",
+    "floorName": "string",
+    "departmentName": "string",
+    "garageLevel": "string",
+    "garageSections": [
+      {
+        "garageSectionName": "string"
+      }
+    ]
+  },
+  "employees": [
+    {
+      "employeeName": "string",
+      "employeeSurname": "string",
+      "employeeCheckIn": "string",
+      "employeeCheckOut": "string"
+    }
+  ],
+  "vehicles": [
+    {
+      "vehicleBrand": "string",
+      "vehicleModel": "string",
+      "vehicleColor": "string",
+      "vehicleLicensePlate": "string"
+    }
+  ]
+}

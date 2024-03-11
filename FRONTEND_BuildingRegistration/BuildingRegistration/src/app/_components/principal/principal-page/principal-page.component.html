@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col">
+            <h2>Select a Building</h2>
+            <div class="selector"> 
+                <mat-form-field>
+                    <mat-label>Choose a Building</mat-label>
+                    <mat-select (selectionChange)="onSelected($event)">
+                        <div *ngFor="let building of buildings">
+                            <mat-option [value]="building">{{building.buildingName}}</mat-option>
+                        </div>
+                    </mat-select>
+                </mat-form-field>
+
+                <button type="button" class="btn btn-success" (click)="onClick()">View Building</button>
+            </div>
+
+            <div class="container spinner" *ngIf="isSpinnerShowing">
+                <mat-spinner [color]="'warn'"></mat-spinner>
+            </div>
+        </div>
+        <div class="col-4"></div>
+    </div>
+</div>

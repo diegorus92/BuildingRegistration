@@ -1,0 +1,9 @@
+<div class="container">
+   <p>floor {{floor.floorName}}</p>
+    <ul>
+        <li *ngFor="let department of floor.departmentsDtos">
+            <a [routerLink]="'/department'" [queryParams]="{departmentId:department.departmentId}">Depto: {{department.departmentName}} || Occupants Qty = {{department.occupantsQty}}</a>
+        </li>
+    </ul> 
+</div>
+

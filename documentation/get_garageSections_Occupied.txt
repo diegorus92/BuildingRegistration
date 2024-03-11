@@ -1,0 +1,14 @@
+[
+  {
+    "buildingName": "Building Alpha",
+    "buildingAddress": "Los Alamos 123",
+    "garageLevel": "EP",
+    "garageSectionName": "A"
+  },
+  {
+    "buildingName": "Building Alpha",
+    "buildingAddress": "Los Alamos 123",
+    "garageLevel": "EP",
+    "garageSectionName": "C"
+  }
+]

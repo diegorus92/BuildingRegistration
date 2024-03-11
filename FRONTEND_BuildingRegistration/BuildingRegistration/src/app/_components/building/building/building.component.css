@@ -1,0 +1,49 @@
+.container-fluid{
+    background: linear-gradient(45rad,rgb(31, 72, 73), black);
+}
+
+.container{
+    margin-top: 8%;
+}
+
+.header p:nth-child(1){
+    font-size: 5rem;
+    line-height: 80px;
+}
+.header p:nth-child(2){
+    margin-top: 15%;
+    font-size: 3.5rem;
+    line-height: 80px;
+    color:rgb(102, 98, 98);
+}
+
+.note{
+    font-size: 1.5rem;
+    line-height: 50px;
+    margin-top: 15%;
+    margin-left: 5%;
+}
+
+.building-features{
+    padding-top: 5%;
+    padding-left: 8%;
+    margin-top: 35%;
+    background-color: rgb(14, 29, 29);
+    border: 3px rgb(2, 38, 41) solid;
+    border-radius: 0 20px 0 20px;
+    font-size: 1.5rem;
+}
+
+.building-features p{
+    margin-bottom: 5%;
+}
+
+.building-features p>span{
+    margin-left: 5%;
+    font-weight: bold;
+}
+
+.floors-and-garages section{
+    margin-top: 15%;
+}
+

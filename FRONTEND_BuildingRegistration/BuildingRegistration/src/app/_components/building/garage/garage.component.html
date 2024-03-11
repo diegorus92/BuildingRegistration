@@ -1,0 +1,8 @@
+<div class="container">
+    <p>{{garage.garageLevel}}</p>
+    <ul>
+        <li *ngFor="let garageSection of garage.garageSectionsDtos">{{garageSection.garageSectionName}} || Occupants QTY: {{garageSection.occupantsQty}}</li>
+    </ul>
+</div>
+
+

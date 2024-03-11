@@ -1,0 +1,119 @@
+<div class="container container-form">
+    <form [formGroup]="buildingFormGroup" (ngSubmit)="onSubmit()">
+        
+        <!--Building Name and Address inputs-->
+        <section>
+            <input class="form-control" formControlName="buildingName" type="text" placeholder="Building Name" aria-label="default input example">
+            <input class="form-control" formControlName="buildingAddress" type="text" placeholder="Building Address" aria-label="default input example"> 
+        </section>
+
+        <!--Selects-->
+        <section>
+            <label for="SelectionBuildingHasGuard" class="form-label">Has Guard Service?</label>
+            <select class="form-select" formControlName="buildingHasGuard" id="SelectionBuildingHasGuard" aria-label="Default select example">
+                <option value="" selected>Open this select menu</option>
+                <option value="true">YES</option>
+                <option value="false">NO</option>
+            </select>
+
+            <label for="SelectionBuildingHasCleaninService" class="form-label">Has Cleanin Service?</label>
+            <select class="form-select" formControlName="buildingHasCleaningService" id="SelectionBuildingHasCleaninService" aria-label="Default select example">
+                <option value="" selected>Open this select menu</option>
+                <option value="true">YES</option>
+                <option value="false">NO</option>
+            </select> 
+
+            <label for="SelectionBuildingHasJanitor" class="form-label">Has Janitor?</label>
+            <select class="form-select" formControlName="buildingHasJanitor" id="SelectionBuildingHasJanitor" aria-label="Default select example">
+                <option value="" selected>Open this select menu</option>
+                <option value="true">YES</option>
+                <option value="false">NO</option>
+            </select>
+
+            <label for="SelectionBuildingHasWifi" class="form-label">Has WIFI?</label>
+            <select class="form-select" formControlName="buildingHasWifi" id="SelectionBuildingHasWifi" aria-label="Default select example">
+                <option value="" selected>Open this select menu</option>
+                <option value="true">YES</option>
+                <option value="false">NO</option>
+            </select>
+
+            <label for="SelectionBuildingAllowPet" class="form-label">Allow Pets?</label>
+            <select class="form-select" formControlName="buildingAllowPet" id="SelectionBuildingAllowPet" aria-label="Default select example">
+                <option value="" selected>Open this select menu</option>
+                <option value="true">YES</option>
+                <option value="false">NO</option>
+            </select>
+        </section>
+        
+
+        <!--Elevators Qty-->
+        <section>
+            <label for="ElevatorQty" class="form-label">Elevator Qty</label>
+            <input class="form-control" formControlName="buildingElevatorQty" id="ElevatorQty" min="0" type="number" aria-label="default input example">
+        </section>
+        
+        <!--Building Note-->
+        <section>
+            <label for="BuildingNote" class="form-label">Notes</label>
+            <textarea class="form-control" formControlName="buildingNote" id="BuildingNote" rows="3"></textarea>
+        </section>
+        
+
+        <!--FloorsDtos-->
+        <section>
+            <button type="button" class="btn btn-dark" (click)="addFloorDtosGroup()">Add Floor</button>
+            <div formArrayName="floorDtos" *ngFor="let floor of floorDtosGroup.controls; let floorIndex=index">
+                <!--FloorsDtos Control list iteration-->
+                <div class="form-control" formGroupName="{{floorIndex}}">
+                    <div class="iterate-control">
+                        <input class="form-control" formControlName="floorName" type="text" placeholder="Floor Name" aria-label="default input example">
+                        <button type="button" class="btn btn-danger" (click)="removeFloor(floorIndex)">-</button>
+                    </div>
+
+                    <!--DeparmentsDtos(into current FloorDto)-->
+                    <div class="sub-input">
+                        <button type="button" class="btn btn-dark" (click)="addDepartmentDtosGroup(floorIndex)">Add Department</button>
+                        <div formArrayName="departmentsDtos" *ngFor="let department of getDepartmentsFloor(floorIndex).controls; let departmentIndex=index">
+                            <!--DepartmentsDtos Control list iteration-->
+                            <div class="form-control" formGroupName="{{departmentIndex}}">
+                                <div class="iterate-control">
+                                    <input class="form-control" formControlName="departmentName" type="text" placeholder="Department Name" aria-label="default input example">
+                                    <button type="button" class="btn btn-danger" (click)="removeDepartment(floorIndex, departmentIndex)">-</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>  
+            </div>
+        </section>
+
+        <!--GaragesDtos-->
+        <section>
+            <button type="button" class="btn btn-dark" (click)="addGarageDtosGroup()">Add Garage</button>
+            <div formArrayName="garageDtos" *ngFor="let garage of garageDtosGroup.controls; let garageIndex=index">
+                <div class="form-control" formGroupName="{{garageIndex}}">
+                    <div class="iterate-control">
+                        <input class="form-control" formControlName="garageLevel" type="text" placeholder="Garage Level floor" aria-label="default input example">
+                        <button type="button" class="btn btn-danger" (click)="removeGarage(garageIndex)">-</button>
+                    </div>
+
+                    <!--GarageSectionsDtos (into current Garage)-->
+                    <div class="sub-input">
+                        <button type="button" class="btn btn-dark" (click)="addGarageSectionGroup(garageIndex)">Add Garage Section</button>
+                        <div formArrayName="garageSectionsDtos" *ngFor="let garageSection of getGarageSections(garageIndex).controls; let garageSectionIndex=index">
+                            <!--GaragesSections iteration-->
+                            <div class="form-control" formGroupName="{{garageSectionIndex}}">
+                                <div class="iterate-control">
+                                    <input class="form-control" formControlName="garageSectionName" type="text" placeholder="Garage Section Name" aria-label="default input example">
+                                    <button type="button" class="btn btn-danger" (click)="removeGarageSection(garageIndex, garageSectionIndex)">-</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <button type="submit" class="btn btn-success submit-btn">Submit</button>
+    </form>
+</div>

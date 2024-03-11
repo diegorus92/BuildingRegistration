@@ -1,0 +1,7 @@
+@BuildingRegistrationAPI_AL_HostAddress = http://localhost:5259
+
+GET {{BuildingRegistrationAPI_AL_HostAddress}}/weatherforecast/
+Accept: application/json,
+
+###
+

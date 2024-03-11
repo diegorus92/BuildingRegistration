@@ -1,0 +1,26 @@
+.container{
+    height: 700px;
+}
+
+.col{
+    margin-top: 200px;
+}
+
+.selector{
+    display:flex;
+    flex-direction: row;
+}
+
+.btn{
+    height: 57px;
+    margin-left: 10px;
+}
+
+.spinner{
+    position: sticky;
+    margin-left: 20%;
+}
+
+
+
+

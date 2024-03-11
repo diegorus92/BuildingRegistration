@@ -1,0 +1,49 @@
+{
+  "occupantName": "Manuel",
+  "occupantSurname": "Gomez",
+  "occupantCellPhone": "384384",
+  "occupantEmail": "emanu.33@gmail.com",
+  "building": {
+    "buildingName": "Building Alpha",
+    "buildingAddress": "Los Alamos 123",
+    "floorName": "2",
+    "departmentName": "B",
+    "garageLevel": "EP",
+    "garageSections": [
+      {
+        "garageSectionName": "A"
+      },
+      {
+        "garageSectionName": "C"
+      }
+    ]
+  },
+  "employees": [
+    {
+      "employeeName": "Sarah",
+      "employeeSurname": "Connor",
+      "employeeCheckIn": "10:00",
+      "employeeCheckOut": "15:00"
+    },
+    {
+      "employeeName": "Marco",
+      "employeeSurname": "Polo",
+      "employeeCheckIn": "14:00",
+      "employeeCheckOut": "17:00"
+    }
+  ],
+  "vehicles": [
+    {
+      "vehicleBrand": "Toyota",
+      "vehicleModel": "Hilux",
+      "vehicleColor": "grey",
+      "vehicleLicensePlate": "LMN234"
+    },
+    {
+      "vehicleBrand": "Nissan",
+      "vehicleModel": "Zaphiro",
+      "vehicleColor": "black",
+      "vehicleLicensePlate": "UML334"
+    }
+  ]
+}

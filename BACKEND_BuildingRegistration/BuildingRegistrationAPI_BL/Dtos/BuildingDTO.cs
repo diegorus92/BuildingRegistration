@@ -1,0 +1,24 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BuildingRegistrationAPI_BL.Dtos
+{
+    public class BuildingDTO
+    {
+        public string? BuildingName { get; set; }
+        public string BuildingAddress { get; set; }
+        public bool? BuildingHasGuard { get; set; }
+        public bool? BuildingHasCleaningService { get; set; }
+        public bool? BuildingHasJanitor { get; set; }
+        public bool? BuildingHasWifi { get; set; }
+        public bool? BuildingAllowPet { get; set; }
+        public short BuildingElevatorQty { get; set; }
+        public string? BuildingNote { get; set; }
+
+        public ICollection<FloorDTO> floorDtos { get; set; } = new List<FloorDTO>();
+        public ICollection<GarageDTO> garageDtos { get; set; } = new List<GarageDTO>();
+    }
+}
